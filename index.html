@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wizard Parking - The Magic of Parking, Simplified.</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- The video background and overlay -->
+    <div class="video-background-wrapper">
+      <video autoplay muted loop playsinline class="cover-video">
+        <source src="cover-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+
+    <!-- The main content, centered on the page -->
+    <div class="main-content">
+      <header class="hero-content">
+        <img src="logo.png" alt="Wizard Parking Logo" class="logo" />
+        <h1>The End of Circling the Block.</h1>
+        <p>
+          Finding a parking spot shouldn't feel like a curse. Wizard Parking is
+          the new app that lets you magically find, book, and pay for your
+          perfect spot in advance.
+        </p>
+
+        <form id="waitlist-form" class="waitlist-form">
+          <input
+            type="email"
+            id="email-input"
+            placeholder="Enter your email for early access"
+            required
+          />
+          <button type="submit">Get Notified At Launch</button>
+        </form>
+      </header>
+    </div>
+
+    <!-- The footer now contains the nav links first, then the copyright -->
+    <footer class="site-footer">
+      <nav class="footer-nav">
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="mailto:contact@wizardparking.com">Contact Us</a>
+      </nav>
+      <p class="copyright-text">
+        &copy; 2025 Wizard Parking LLC. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>
