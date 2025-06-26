@@ -17,14 +17,15 @@
             }
           });
 
-          if (response.ok) {
-            emailInput.style.display = 'none'; 
-            submitButton.textContent = 'Thanks for joining!'; 
-            submitButton.disabled = true;
-            console.log('Form submitted successfully to Formspree');
-          } else {
-            throw new Error('Network response was not ok.');
-          }
+        if (response.ok) {
+        waitlistForm.style.display = 'none';
+        const successMessage = document.createElement('p');
+        successMessage.textContent = 'Thanks for joining. We will let you know when we are live!';
+        successMessage.className = 'form-success-message'; 
+        waitlistForm.parentNode.appendChild(successMessage);
+
+        console.log('Form submitted successfully to Formspree');
+        }
         } catch (error) {
           submitButton.textContent = 'Oops! Please try again.';
           submitButton.style.backgroundColor = '#d9534f'; 

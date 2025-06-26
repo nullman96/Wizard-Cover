@@ -107,6 +107,12 @@
         pointer-events: none;
       }
 
+      .form-success-message {
+        color: var(--gold); 
+        font-weight: 600;
+        padding: 1rem 0; 
+      }
+
       h1 {
         font-size: 2.5rem;
         font-weight: 700;
