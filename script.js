@@ -1,32 +1,38 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const waitlistForm = document.getElementById('waitlist-form');
-  if (waitlistForm) {
-    waitlistForm.addEventListener('submit', function (event) {
-      event.preventDefault(); 
+  document.addEventListener('DOMContentLoaded', function() {
+      
+      const waitlistForm = document.getElementById('waitlist-form');
+      
+      async function handleSubmit(event) {
+        event.preventDefault();
+        const submitButton = waitlistForm.querySelector('button[type="submit"]');
+        const emailInput = document.getElementById('email-input');
+        const data = new FormData(event.target);
+        
+        try {
+          const response = await fetch(event.target.action, {
+            method: waitlistForm.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+          });
 
-      const emailInput = document.getElementById('email-input');
-      const submitButton = waitlistForm.querySelector('button[type="submit"]');
-
-      fetch(event.target.action, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(new FormData(event.target)).toString(),
-      })
-      .then(response => {
           if (response.ok) {
-              emailInput.style.display = 'none'; 
-              submitButton.textContent = 'Thanks for joining!'; 
-              submitButton.disabled = true; 
-              console.log('Form submitted successfully');
+            emailInput.style.display = 'none'; 
+            submitButton.textContent = 'Thanks for joining!'; 
+            submitButton.disabled = true;
+            console.log('Form submitted successfully to Formspree');
           } else {
-              throw new Error('Server responded with an error.');
+            throw new Error('Network response was not ok.');
           }
-      })
-      .catch((error) => {
-        submitButton.textContent = 'Oops! Please try again.';
-        submitButton.style.backgroundColor = '#d9534f'; 
-        console.error('Form submission error:', error);
-      });
+        } catch (error) {
+          submitButton.textContent = 'Oops! Please try again.';
+          submitButton.style.backgroundColor = '#d9534f'; 
+          console.error('Form submission error:', error);
+        }
+      }
+      
+      if (waitlistForm) {
+        waitlistForm.addEventListener("submit", handleSubmit)
+      }
     });
-  }
-});
