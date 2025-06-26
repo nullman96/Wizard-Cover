@@ -1,0 +1,260 @@
+/* Define Your Brand Colors from globals.css */
+:root {
+  --deep-purple: #2a0044;
+  --gold: #ffd700;
+  --dark-gold: #daa520;
+  --midnight-blue: #191970;
+  --soft-purple: #9370db;
+  --foreground: #ededed;
+  --input-bg: rgba(94, 34, 115, 0.5); /* #5e2273 with alpha */
+  --glass-border: rgba(255, 215, 0, 0.3);
+  --shadow-wizard: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-gold-glow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* --- Base Styles --- */
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* CHANGE: Use height instead of min-height for exact viewport fit */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+/* --- Video Background --- */
+.video-background-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+  background-color: var(--deep-purple); /* Fallback color if video fails */
+}
+
+.cover-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    135deg,
+    var(--deep-purple),
+    var(--midnight-blue)
+  );
+  opacity: 0.2;
+}
+
+/* --- Main Content Layout --- */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 1rem; /* Reduced padding */
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow-y: auto; /* Allow scrolling if content is too tall on very small screens */
+}
+
+.hero-content {
+  max-width: 650px;
+  width: 100%;
+  background-color: rgba(42, 0, 68, 0.8);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 2rem 2.5rem; /* Reduced padding */
+  border-radius: 24px;
+  box-shadow: var(--shadow-wizard);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+  max-width: 90px; /* Slightly smaller */
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 2.5rem; /* Slightly smaller */
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: white;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 1rem; /* Slightly smaller */
+  line-height: 1.5;
+  color: var(--foreground);
+  opacity: 0.9;
+  margin: 0 0 1.5rem 0;
+}
+
+/* --- Form Styles --- */
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Smaller gap */
+}
+
+input[type='email'] {
+  height: 48px; /* Smaller input */
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20px;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-color: var(--input-bg);
+  color: white;
+  font-size: 1rem;
+  box-shadow: inset 0 2px 1px rgba(255, 255, 255, 0.07);
+  transition: all 0.2s ease-in-out;
+}
+
+input[type='email']::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+input[type='email']:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.15);
+}
+
+button[type='submit'] {
+  height: 48px; /* Smaller button */
+  padding: 0 2rem;
+  border-radius: 9999px;
+  background-image: linear-gradient(to right, var(--gold), var(--dark-gold));
+  color: var(--deep-purple);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
+}
+
+button[type='submit']:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+}
+
+/* --- Footer Styles --- */
+.site-footer {
+  flex-shrink: 0;
+  padding: 1rem; /* Reduced padding */
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem; /* Smaller gap */
+}
+
+.footer-nav {
+  order: 1;
+}
+
+.copyright-text {
+  order: 2;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem; /* Smaller text */
+}
+
+.footer-nav a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 0.75rem; /* Smaller text */
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+/* --- Media Query for Mobile and Height-Constrained Viewports --- */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 1.25rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  .main-content {
+    padding: 1rem 0.5rem;
+  }
+}
+
+/* For very short viewports */
+@media (max-height: 700px) {
+  .hero-content {
+    padding: 1.5rem 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .logo {
+    max-width: 70px;
+    margin-bottom: 0.5rem;
+  }
+
+  input[type='email'],
+  button[type='submit'] {
+    height: 44px;
+  }
+
+  .waitlist-form {
+    gap: 0.5rem;
+  }
+
+  .site-footer {
+    padding: 0.75rem;
+  }
+}
